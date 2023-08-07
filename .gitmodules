@@ -1,3 +1,9 @@
 [submodule "Fertilizer-Recommendation"]
 	path = Fertilizer-Recommendation
 	url = https://github.com/07Sada/Fertilizer-Recommendation.git
+[submodule "crop-recommendation"]
+	path = crop-recommendation
+	url = https://github.com/07Sada/crop-recommendation.git
+[submodule "plant-diseases-classifier"]
+	path = plant-diseases-classifier
+	url = https://github.com/07Sada/plant-diseases-classifier.git
