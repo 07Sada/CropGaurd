@@ -1,0 +1,33 @@
+{% extends 'base.html' %} {% block body %} {% include "nav_bar.html" %}
+<style>
+  /* Custom CSS to modify container size and background */
+  body {
+    background-image: linear-gradient(to right, #75ee71c7, #eceb84);
+  }
+</style>
+
+<div class="container image_input">
+  <div class="input">
+    <form
+      method="POST"
+      action="/image_classification_output"
+      enctype="multipart/form-data"
+      class="upload_space"
+    >
+      <h4>Please upload the image</h4>
+      <div class="input-group mb-3">
+        <input
+          type="file"
+          name="image_file"
+          class="form-control"
+          id="inputGroupFile02"
+        />
+      </div>
+      <div class="d-grid gap-50 d-md-block">
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="reset" class="btn btn-primary">Clear</button>
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}

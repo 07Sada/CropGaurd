@@ -1,0 +1,108 @@
+{% extends 'base.html' %} {% block body %} {% include "nav_bar.html" %}
+<style>
+  /* Custom CSS to modify container size and background */
+  body {
+    background-image: linear-gradient(to right, #75ee71c7, #eceb84);
+  }
+</style>
+<div
+  class="container-fluid recommendation-input-container d-flex justify-content-center"
+>
+  <form class="row g-3" method="GET" action="/fertilizer_recommendation_output">
+    <h3 class="text-center">AI-Powered Fertilizer Recommendations</h3>
+    <div class="col-md-4" name="temperature">
+      <label for="temperature" class="form-label">Temperature</label>
+      <input
+        type="number"
+        class="form-control"
+        id="temperature"
+        name="temperature"
+        placeholder="Enter the temperature Value"
+      />
+    </div>
+    <div class="col-md-4" name="humidity">
+      <label for="humidity" class="form-label">Humidity</label>
+      <input
+        type="number"
+        class="form-control"
+        id="humidity"
+        name="humidity"
+        placeholder="Enter the Humidity Value"
+      />
+    </div>
+    <div class="col-md-4" name="moisture">
+      <label for="moisture" class="form-label">Moisture</label>
+      <input
+        type="number"
+        class="form-control"
+        id="moisture"
+        name="moisture"
+        placeholder="Enter the Moisture Value"
+      />
+    </div>
+    <div class="col-md-4" name="nitrogen">
+      <label for="nitrogen" class="form-label">Nitrogen</label>
+      <input
+        type="number"
+        class="form-control"
+        id="nitrogen"
+        name="nitrogen"
+        placeholder="Enter the Nitrogen Value"
+      />
+    </div>
+    <div class="col-md-4" name="potassium">
+      <label for="potassium" class="form-label">Potassium</label>
+      <input
+        type="number"
+        class="form-control"
+        id="potassium"
+        name="potassium"
+        placeholder="Enter the Potassium Value"
+      />
+    </div>
+    <div class="col-md-4" name="phosphorous">
+      <label for="phosphorous" class="form-label">Phosphorous</label>
+      <input
+        type="number"
+        class="form-control"
+        id="phosphorous"
+        name="phosphorous"
+        placeholder="Enter the Phosphorous Value"
+      />
+    </div>
+    <div class="col-md-6" name="soil_type">
+      <label for="soil_type" class="form-label">Soil Type</label>
+      <select id="soil_type" class="form-select" name="soil_type">
+        <option selected>Select the Soil Type from the dropdown</option>
+        <option value="Sandy">Sandy</option>
+        <option value="Loamy">Loamy</option>
+        <option value="Black">Black</option>
+        <option value="Red">Red</option>
+        <option value="Clayey">Clayey</option>
+      </select>
+    </div>
+    <div class="col-md-6" name="crop_type">
+      <label for="crop_type" class="form-label">Crop Type</label>
+      <select id="crop_type" class="form-select" name="crop_type">
+        <option selected>Select the Crop Type from the dropdown</option>
+        <option value="Maize">Maize</option>
+        <option value="Sugarcane">Sugarcane</option>
+        <option value="Cotton">Cotton</option>
+        <option value="Tobacco">Tobacco</option>
+        <option value="Paddy">Paddy</option>
+        <option value="Barley">Barley</option>
+        <option value="Wheat">Wheat</option>
+        <option value="Millets">Millets</option>
+        <option value="Oil seeds">Oil seeds</option>
+        <option value="Pulses">Pulses</option>
+        <option value="Ground Nuts">Ground Nuts</option>
+      </select>
+    </div>
+    <div class="d-grid gap-50 d-md-block">
+      <button type="submit" class="btn btn-primary">Submit</button>
+      <button type="reset" class="btn btn-primary">Clear</button>
+    </div>
+  </form>
+</div>
+
+{% endblock %}

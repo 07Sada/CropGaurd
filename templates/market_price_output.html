@@ -1,0 +1,44 @@
+{% extends 'base.html' %} {% block body %} {% include "nav_bar.html" %}
+<style>
+  .table {
+    border-spacing: 0;
+    background-color: #f5f5f5;
+    border-radius: 15px;
+    border: 2px solid aqua;
+  }
+
+  .table-header {
+    text-align: left;
+  }
+  .table-cell {
+    padding: 8px;
+  }
+</style>
+<div class="container">
+  <h2 class="text-center">Commodity Prices</h2>
+  <table class="table">
+    <tr class="table-header">
+      {% for header in data[0] %}
+      <th class="table-cell">{{header|upper}}</th>
+      {% endfor %}
+    </tr>
+    {% set data_length = data|length %} {% for index_value in range(data_length)
+    %}
+    <tr class="table-row">
+      {% for row in data[index_value].values() %}
+      <td class="table-cell">{{row}}</td>
+      {% endfor %}
+    </tr>
+    {% endfor %}
+  </table>
+  <!-- <div class="d-grid gap-50 d-md-block">
+    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="reset" class="btn btn-primary">Clear</button>
+  </div> -->
+  <div>
+    <a href="{{url_for('market_price')}}" class="btn btn-primary" role="button"
+      >Choose Different State</a
+    >
+  </div>
+</div>
+{% endblock %}

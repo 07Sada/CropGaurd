@@ -1,0 +1,38 @@
+{% extends 'base.html' %} {% block body %} {% include "nav_bar.html" %}
+<style>
+    /* Custom CSS background color*/
+    body {
+      background-image: linear-gradient(to right, #75ee71c7, #eceb84);
+    }
+  </style>
+  
+  <div
+    class="d-flex justify-content-center align-items-center"
+    style="min-height: 100vh"
+  >
+    <div class="container crop-image">
+      <div class="row">
+        <h2 class="text-center">Crop Recommendation</h2>
+        <div class="col-md-6">
+          <img
+            src="data:image/jpeg;base64,{{ image_data_base64 }}"
+            alt="Image"
+  
+          />
+        </div>
+        <div
+          class="col-md-6 text d-flex flex-column justify-content-center align-items-center"
+        >
+          <h1 class="text-center">{{input_file_name.capitalize()}}</h1>
+          <p class="text-center">{{crop_details}}</p>
+        </div>
+      </div>
+      <a href="{{url_for('crop_recommendation')}}" class="btn btn-primary" role="button"
+      >Check with Different Values</a
+    >
+  </div>
+    </div>
+  </div>
+  <div>
+
+{% endblock %}

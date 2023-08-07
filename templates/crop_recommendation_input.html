@@ -1,0 +1,96 @@
+{% extends 'base.html' %} {% block body %} {% include "nav_bar.html" %}
+<style>
+  /* Custom CSS to modify container size and background */
+  body {
+    background-image: linear-gradient(to right, #75ee71c7, #eceb84);
+  }
+</style>
+<div
+  class="container recommendation-input-container d-flex justify-content-center"
+>
+  <form class="row g-3" method="GET" action="/crop_recommendation_output">
+    <h3 class="text-center">AI-Powered Crop Recommendations</h3>
+    <div class="col-md-4" name="temperature">
+      <label for="temperature" class="form-label">Temperature</label>
+      <input
+        type="number"
+        class="form-control"
+        id="temperature"
+        placeholder="Enter the temperature Value"
+        name="temperature"
+        required
+      />
+    </div>
+    <div class="col-md-4" name="humidity">
+      <label for="humidity" class="form-label">Humidity</label>
+      <input
+        type="number"
+        class="form-control"
+        id="humidity"
+        placeholder="Enter the Humidity Value"
+        name="humidity"
+        required
+      />
+    </div>
+    <div class="col-md-4" name="ph">
+      <label for="ph" class="form-label">ph value</label>
+      <input
+        type="number"
+        class="form-control"
+        id="ph"
+        placeholder="Enter the ph value Value"
+        name="ph"
+        required
+      />
+    </div>
+    <div class="col-md-4" name="nitrogen">
+      <label for="nitrogen" class="form-label">Nitrogen</label>
+      <input
+        type="number"
+        class="form-control"
+        id="nitrogen"
+        placeholder="Enter the Nitrogen Value"
+        name="nitrogen"
+        required
+      />
+    </div>
+    <div class="col-md-4" name="potassium">
+      <label for="potassium" class="form-label">Potassium</label>
+      <input
+        type="number"
+        class="form-control"
+        id="potassium"
+        placeholder="Enter the Potassium Value"
+        name="potassium"
+        required
+      />
+    </div>
+    <div class="col-md-4" name="phosphorous">
+      <label for="phosphorous" class="form-label">Phosphorous</label>
+      <input
+        type="number"
+        class="form-control"
+        id="phosphorous"
+        placeholder="Enter the Phosphorous Value"
+        name="phosphorous"
+        required
+      />
+    </div>
+    <div class="col-md-4" name="rain_fall">
+      <label for="rain_fall" class="form-label">Rain Fall</label>
+      <input
+        type="number"
+        class="form-control"
+        id="rain_fall"
+        placeholder="Enter the Rain Fall in mm"
+        name="rain_fall"
+        required
+      />
+    </div>
+    <div class="d-grid gap-50 d-md-block">
+      <button type="submit" class="btn btn-primary">Submit</button>
+      <button type="reset" class="btn btn-primary">Clear</button>
+    </div>
+  </form>
+</div>
+{% endblock %}

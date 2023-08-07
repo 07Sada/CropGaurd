@@ -1,0 +1,20 @@
+{% extends 'base.html' %} {% block body %} {% include "nav_bar.html" %}
+<style>
+    /* Custom CSS background color*/
+    body {
+      background-image: linear-gradient(to right, #75ee71c7, #eceb84);
+    }
+
+</style>
+
+<div class="container market_price_message ">
+    <h5> Commodity prices for the selected state are currently unavailable from the Government API. 
+        Please consider trying again later or selecting a different state. </h5>
+        <div>
+            <a href="{{url_for('market_price')}}" class="btn btn-primary" role="button"
+              >Choose Different State</a
+            >
+          </div>
+</div>
+
+{% endblock %}

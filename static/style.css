@@ -1,0 +1,272 @@
+body {
+
+    padding: 0;
+    margin: 0;
+}
+
+/*------------navigation bar ----------------*/
+#nav-bar {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.navbar {
+    background-image: linear-gradient(to right, #75ee71c7, #eceb84);
+    padding: 0 !important;
+}
+
+.navbar-nav li {
+    padding: 0 10px;
+}
+
+.navbar-nav li a {
+    font-weight: 600;
+}
+
+
+/*-----------------banner section----------*/
+#banner {
+    background-image: linear-gradient(to right, #75ee71c7, #eceb84);
+    padding-top: 5%;
+}
+
+.promo-title {
+    font-size: 40px;
+    font-weight: 600;
+    margin-top: 100px;
+}
+
+.img-fluid {
+    border-radius: 12px;
+}
+
+.bottom-img {
+    width: 100%;
+}
+
+/*-----------------Services section----------*/
+#services {
+    padding: 80px 0;
+}
+
+.service-img {
+    width: 100px;
+    margin-top: 20px;
+}
+
+.service-name {
+    text-align: center;
+    /*Center horizontally*/
+}
+
+.services {
+    padding: 20px;
+}
+
+.title::before {
+    content: "";
+    background: hsl(128, 84%, 66%);
+    height: 5px;
+    width: 200px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    transform: translateY(63px);
+}
+
+.title::after {
+    content: "";
+    background: hsl(128, 84%, 66%);
+    height: 10px;
+    width: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 40px;
+    display: block;
+    transform: translateY(8px);
+}
+
+/*-----------------Services section----------*/
+
+#about-us {
+    padding-bottom: 50px;
+    padding-top: 50px;
+}
+
+#about-us ul li {
+    margin: 10px 0;
+}
+
+/*-----------------quotes-------------------*/
+#quotes {
+    margin: 100px 0;
+}
+
+.quotes {
+    border-left: 4px solid #f1f397e3;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.quotes img {
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    margin: 0 10px;
+}
+
+.user-details {
+    display: inline-block;
+    font-size: 12px;
+}
+
+/*-----------------Social Media Section-------*/
+#social-media {
+    /* background-color: #D9F8C4; */
+    padding: 100px 0;
+}
+
+#social-media p {
+    font-size: 36px;
+    font-weight: 600;
+    margin-bottom: 30px;
+}
+
+.social-icons img {
+    width: 120px;
+    transition: 0.5s;
+    padding: 20px;
+}
+
+.social-icons a:hover img {
+    transform: translateY(-10px);
+}
+
+/*---------Footer Section -------------------*/
+
+#footer {
+    background-image: linear-gradient(to right, #75ee71c7, #eceb84);
+    color: rgb(106, 110, 110)
+}
+
+#footer img {
+    width: 100%;
+}
+
+.footer-box {
+    padding: 20px;
+}
+
+#footer .footer-box img {
+    width: 30%;
+    margin-bottom: 20px;
+    border-radius: 5%;
+}
+
+#footer .footer-box .addition-info {
+    display: inline-block;
+    font-size: 20px;
+}
+
+/*-----------recommendation input -----*/
+.recommendation-input-container {
+    max-width: 800px;
+    /* Set the maximum width of the container */
+    margin: 60px auto 0;
+    /* Center the container horizontally and add 60px top margin */
+    display: flex;
+    align-items: center;
+    background-color: white;
+    padding: 20px;
+    border-radius: 15px;
+    /* Add 15px border-radius to all corners */
+}
+
+/*-----------image classification -----*/
+.image_input {
+    width: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 30px;
+    border-radius: 20px;
+}
+
+/*-----------Market Input -----------*/
+.market_input {
+    width: 40%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 15px;
+    border-radius: 20px;
+}
+
+
+/*-------Crop Recommendation Output---*/
+.crop-image {
+    background-color: white;
+    padding: 30px;
+    border-radius: 20px;
+  }
+  .crop-image img {
+    border-radius: 20px;
+    width: 100%;
+  }
+  .crop-image .text h1 {
+    font-size: 35px;
+    margin-bottom: 20px;
+  }
+
+  .crop-image .text p {
+    font-size: 18px;
+  }
+
+  .crop-image a{
+    margin-top: 20px;
+  }
+  .crop-image h2{
+    margin-bottom: 30px;
+  }
+
+
+/*-------Image Classification output page---*/
+  .plant-image {
+    background-color: white;
+    padding: 30px;
+    border-radius: 20px;
+    width: 60%;
+  }
+  .plant-image img {
+    border-radius: 20px;
+    width: 70%;
+    margin: 0 auto;
+    display: block;
+  }
+
+  .plant-image a{
+    margin-top: 20px;
+  
+  }
+  .plant-image h2{
+    margin-bottom: 30px;
+  }
+
+
+  /*-------market price output message---*/
+  .market_price_message{
+    background-color: white;
+    padding: 20px;
+    border-radius: 15px;
+    width: 70%;
+    margin-top: 5%;
+}
+
+.market_price_message a{
+    margin-top: 10px;
+}

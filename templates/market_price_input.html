@@ -1,0 +1,68 @@
+{% extends 'base.html' %} {% block body %} {% include "nav_bar.html" %}
+<style>
+  /* Custom CSS background color*/
+  body {
+    background-image: linear-gradient(to right, #75ee71c7, #eceb84);
+  }
+</style>
+
+<div class="container market_input d-flex justify-content-center">
+  <form class="row g-3" method="POST" action="/market_price_output">
+    <h3 class="text-center">Please select the state</h3>
+    <div class="col">
+      <label for="inputState" class="form-label">State</label>
+      <select
+        id="inputState"
+        name="selected_state"
+        class="form-select"
+        required
+      >
+        <option selected>Select state from dropdown</option>
+        <option value="Andhra%20Pradesh">Andhra Pradesh</option>
+        <option value="Arunachal%20Pradesh">Arunachal Pradesh</option>
+        <option value="Assam">Assam</option>
+        <option value="Bihar">Bihar</option>
+        <option value="Chhattisgarh">Chhattisgarh</option>
+        <option value="Goa">Goa</option>
+        <option value="Gujarat">Gujarat</option>
+        <option value="Haryana">Haryana</option>
+        <option value="Himachal%20Pradesh">Himachal Pradesh</option>
+        <option value="Jharkhand">Jharkhand</option>
+        <option value="Karnataka">Karnataka</option>
+        <option value="Kerala">Kerala</option>
+        <option value="Madhya%20Pradesh">Madhya Pradesh</option>
+        <option value="Maharashtra">Maharashtra</option>
+        <option value="Manipur">Manipur</option>
+        <option value="Meghalaya">Meghalaya</option>
+        <option value="Mizoram">Mizoram</option>
+        <option value="Nagaland">Nagaland</option>
+        <option value="Odisha">Odisha</option>
+        <option value="Punjab">Punjab</option>
+        <option value="Rajasthan">Rajasthan</option>
+        <option value="Sikkim">Sikkim</option>
+        <option value="Tamil%20Nadu">Tamil Nadu</option>
+        <option value="Telangana">Telangana</option>
+        <option value="Tripura">Tripura</option>
+        <option value="Uttar%20Pradesh">Uttar Pradesh</option>
+        <option value="Uttarakhand">Uttarakhand</option>
+        <option value="West%20Bengal">West Bengal</option>
+        <option value="Andaman%20and%20Nicobar%20Islands">
+          Andaman and Nicobar Islands
+        </option>
+        <option value="Chandigarh">Chandigarh</option>
+        <option value="Dadra%20and%20Nagar%20Haveli%20and%20Daman%20and%20Diu">
+          Dadra and Nagar Haveli and Daman and Diu
+        </option>
+        <option value="Lakshadweep">Lakshadweep</option>
+        <option value="Delhi">Delhi</option>
+        <option value="Puducherry">Puducherry</option>
+      </select>
+      <div class="invalid-feedback">Please select a valid state.</div>
+    </div>
+    <div class="d-grid gap-50 d-md-block">
+      <button type="submit" class="btn btn-primary">Submit</button>
+      <button type="reset" class="btn btn-primary">Clear</button>
+    </div>
+  </form>
+</div>
+{% endblock %}

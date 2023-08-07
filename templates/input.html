@@ -1,0 +1,26 @@
+{% extends 'base.html' %} {% block body %} {% include "nav_bar.html" %}
+<style>
+  body {
+    background-image: linear-gradient(to right, #75ee71c7, #eceb84);
+  }
+</style>
+  <div class="container image_input">
+    <!-- Form is centered within the .form-container div -->
+    <form action="/result" method="post" class="input_class">
+      <h1 class="text-center">This is input page</h1>
+      <label for="input_file_name" class="form-label">File name</label>
+      <input
+        type="text"
+        class="form-control"
+        id="input_file_name"
+        name="input_file_name"
+        placeholder="Enter the file name"
+      />
+      <br>
+      <div class="d-grid gap-50 d-md-block">
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="reset" class="btn btn-primary">Clear</button>
+      </div>
+    </form>
+  </div>
+{% endblock %}
