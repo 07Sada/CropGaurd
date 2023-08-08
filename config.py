@@ -1,0 +1,6 @@
+from artifacts import crop_model_path, crop_transformer_path, crop_target_encoder_path
+from utils import load_model_and_encoders
+
+crop_model, crop_pipeline_encoder, crop_label_encoder = load_model_and_encoders(model_path=crop_model_path, 
+                                                                                transformer_path=crop_transformer_path,
+                                                                                target_encoder_path=crop_target_encoder_path)

@@ -53,4 +53,4 @@ def retrieve_data(database_name, collection_name, search_query):
     result = collection.find_one(search_query)
 
     client.close()
-    return result['crop_info']
+    return result['data_info']

@@ -2,3 +2,6 @@ pymongo
 flask
 requests
 numpy
+python-dotenv
+scikit-learn
+dill
