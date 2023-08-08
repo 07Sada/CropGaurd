@@ -1,5 +1,6 @@
 from config import crop_model, crop_pipeline_encoder, crop_label_encoder
 from config import fertilizer_model, fertilizer_pipeline_encoder, fertilizer_label_encoder
+from config import plant_diseases_classifier_model
 from utils import retrieve_image_by_name_from_mongodb, retrieve_data
 from flask import Flask, request, render_template, jsonify
 import requests
@@ -8,6 +9,8 @@ import numpy as np
 import base64
 
 app = Flask(__name__)
+
+app.config['UPLOAD_FOLDER'] = 'static/uploaded_image'
 
 @app.route("/")
 @app.route("/home")
@@ -88,9 +91,35 @@ def fertilizer_recommendation_output():
     return render_template('fertilizer_recommendation_ouput.html', image_data_base64=image_data_base64, label= label[0], fertilizer_details=fertilizer_details)
 
 
-@app.route('/image_classification')
+@app.route('/image_classification', methods=['GET', 'POST'])
 def image_classification():
     return render_template('image_classification_input.html')
+
+@app.route('/image_classification_output', methods=['GET', 'POST'])
+def image_classification_output():
+    file = request.files['image_file']
+    new_filename = "plant_image.JPG"
+    file.save(os.path.join(app.config['UPLOAD_FOLDER'], new_filename))
+    file_path = os.path.join(app.config['UPLOAD_FOLDER'], new_filename)
+
+    # infercing the with the uploaded image
+    results = plant_diseases_classifier_model(file_path)
+    
+    #fetching all the labels 
+    names_dict = results[0].names
+
+    # fetching the probalility of each class
+    probs = results[0].probs.data.tolist()
+
+    # selecting class with maximum probability
+    model_prediction= names_dict[np.argmax(probs)]
+
+    diseases_details = retrieve_data(database_name=os.getenv("DISEASE_DB_NAME"), 
+                                    collection_name=os.getenv("DISEASE_INFO_COLLECTION_NAME"),
+                                    search_query=model_prediction)
+
+    return render_template("image_classification_output.html", model_prediction=model_prediction, diseases_details=diseases_details)
+
 
 @app.route('/market_price')
 def market_price():
@@ -100,7 +129,7 @@ def market_price():
 def market_price_output():
     # input field name is 'selected_state'
     user_input = request.form.get('selected_state')
-    api_key = "579b464db66ec23bdd000001cdd3946e44ce4aad7209ff7b23ac571b"
+    api_key = os.getenv("COMMODITY_PRICE_API_KEY")
 
     # Make a request to the API with the user input
     api_url = f'https://api.data.gov.in/resource/9ef84268-d588-465a-a308-a864a43d0070?api-key={api_key}&format=json&filters%5Bstate%5D={user_input}'
@@ -109,8 +138,12 @@ def market_price_output():
     if response.status_code == 200:
         data = response.json()
         data = data['records']
+        # return render_template('market_price_output.html', data=data)
+        if len(data) > 0:
         # Return the JSON data as a response
-        return render_template('market_price_output.html', data=data)
+            return render_template('market_price_output.html', data=data)
+        else:
+            return render_template("market_price_no_data.html")
     else:
         return jsonify({'error': 'Unable to fetch data from the API'}), 400
 

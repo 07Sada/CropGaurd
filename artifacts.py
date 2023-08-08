@@ -7,6 +7,8 @@ TRANSFORMER_OJBCET_NAME = "transformer.pkl"
 crop_recommendation_artifacts_path = "./crop-recommendation/saved_models"
 fertilizer_recommendation_artifacts_path = "./Fertilizer-Recommendation/saved_models"
 
+plant_diseases_classifier_model_path = "./plant-diseases-classifier/custom_model_weights/best.pt"
+
 
 ## crop recommendation artifacts
 latest_crop_recommendation_artifacts = max(os.listdir(crop_recommendation_artifacts_path)) #0, 1, 2

@@ -5,3 +5,4 @@ numpy
 python-dotenv
 scikit-learn
 dill
+ultralytics
