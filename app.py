@@ -1,4 +1,5 @@
 from config import crop_model, crop_pipeline_encoder, crop_label_encoder
+from config import fertilizer_model, fertilizer_pipeline_encoder, fertilizer_label_encoder
 from utils import retrieve_image_by_name_from_mongodb, retrieve_data
 from flask import Flask, request, render_template, jsonify
 import requests
@@ -49,9 +50,43 @@ def crop_recommendation_output():
     return render_template('crop_recommendation_output.html', image_data_base64=image_data_base64, input_file_name=label[0], crop_details=crop_details)
 
 
-@app.route('/fertilizer_recommendation')
+@app.route('/fertilizer_recommendation', methods=['GET', 'POST'])
 def fertilizer_recommendation():
     return render_template('fertilizer_recommendation_input.html')
+
+@app.route('/fertilizer_recommendation_output', methods=['GET', 'POST'])
+def fertilizer_recommendation_output():
+    temperature = request.form.get("temperature")
+    humidity = request.form.get("humidity")
+    moisture = request.form.get("moisture")
+    nitrogen = request.form.get("nitrogen")
+    potassium = request.form.get("potassium")
+    phosphorous = request.form.get("phosphorous")
+    soil_type = request.form.get("soil_type")
+    crop_type = request.form.get("crop_type")
+
+    input_data = [int(temperature), int(humidity), int(moisture), soil_type, crop_type, int(nitrogen), int(potassium), int(phosphorous)]
+    input_array = np.array(input_data).reshape(-1, 8)
+    
+    transformed_data = fertilizer_pipeline_encoder.transform(input_array)
+    model_prediction = fertilizer_model.predict(transformed_data).astype(int)
+
+    label = fertilizer_label_encoder.inverse_transform(model_prediction)
+
+    # retrieving the image from mongodb dabase
+    image_data = retrieve_image_by_name_from_mongodb(database_name=os.getenv("FERTILIZER_DB_NAME"),
+                                                        collection_name=os.getenv("FERTILIZER_IMAGE_COLLECTION_NAME"),
+                                                        file_name=str(label[0]))
+    
+    # encoding the byte data recieved from the mongodb
+    image_data_base64 = base64.b64encode(image_data).decode('utf-8')
+
+    # retrieving text data from mongodb 
+    fertilizer_details = retrieve_data(database_name=os.getenv("FERTILIZER_DB_NAME"), collection_name= os.getenv("FERTILIZER_INFO_COLLECTION_NAME"), search_query=label[0])
+
+
+    return render_template('fertilizer_recommendation_ouput.html', image_data_base64=image_data_base64, label= label[0], fertilizer_details=fertilizer_details)
+
 
 @app.route('/image_classification')
 def image_classification():
